@@ -77,3 +77,15 @@ CALL sp_VerificarLivrosCategoria('Autoajuda', @possui_livros);
 
 SELECT @possui_livros;
 
+CREATE PROCEDURE sp_LivrosAteAno(IN ano_limite INT)
+BEGIN
+    SELECT Titulo, Ano_Publicacao
+    FROM Livro
+    WHERE Ano_Publicacao <= ano_limite;
+END;
+//
+
+DELIMITER ;
+
+CALL sp_LivrosAteAno(1980);
+
